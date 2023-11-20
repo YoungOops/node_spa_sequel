@@ -19,7 +19,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Users.init({
-    id: DataTypes.INTEGER,// 이거 사실 안 넣어도 되는 거 같음
+    id: {
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+    },
     password: DataTypes.STRING,
     email: DataTypes.STRING,
     name: DataTypes.STRING
