@@ -1,15 +1,13 @@
 //-> 리팩토링 하는데까지 해보기
-
+//몽구스에서 쓰던 스키마 연결하는 것들 지우기 시퀄라이즈는 모델이라는 개념으로 베이터 베이스 테이블을 표현함
 const express = require("express");
-const cart = require("../schemas/cart.js");
-const { listIndexes } = require("../schemas/products.schema.js");
 const router = express.Router();
 const { Products } = require("../models");
 
 
 // 상품 등록. 
 
-router.post("/products", async (req, res) => {
+router.post("/products", authMiddleware, async (req, res) => {
     try {
         const { title, content } = req.body; //구조분해할당
         console.log(req.body);
